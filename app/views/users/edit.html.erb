@@ -6,10 +6,10 @@
       
 <% if @user.errors.any? %>
     <div id="error_explanation">
-      <h3><%= pluralize(@user.errors.count, "error") %> prohibited this obj from being saved:</h3>
+      <h3 class="text-danger"><%= pluralize(@user.errors.count, "error") %> prohibited this obj from being saved:</h3>
       <ul>
         <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+          <li class="text-danger"><%= message %></li>
         <% end %>
       </ul>
     </div>
