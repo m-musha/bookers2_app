@@ -1,20 +1,23 @@
 <main>
-<div class="error_explanation">
-<p><% @user.errors.full_messages.each do |message| %>
-  <div class="form-error">
-     <%= message %>
-  </div>
-<% end %>
-</p>
-</div>
 
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-   
+      
+<% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(@user.errors.count, "error") %> prohibited this obj from being saved:</h3>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+      
 <h2>User info</h2>
-<form>
-<%= form_with model:@user, local:true do |f| %>
+<%= form_with model:@user, local: true do |f| %>
 
 <div class="form-group">
   <label for="inputName">Name</label>
@@ -33,7 +36,6 @@
   
   <%= f.submit "Update User", class: "btn btn-secondary" %>
 <% end %>
-</form>
 </div>
 </div>
 </div>

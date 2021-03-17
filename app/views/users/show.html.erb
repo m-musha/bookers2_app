@@ -1,9 +1,10 @@
 <main>
 <p class="text-success"><%= flash[:notice] %></p>
+<%= render 'books/error', book: @book %>
+
 <div class="container px-5 px-sm-0">
 <div class="row">
 <div class="col-md-3">
-<div><%= render 'books/error', book: @book %></div>
 <%= render 'users/info', user: @user %>
 
 
