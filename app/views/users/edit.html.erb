@@ -1,10 +1,12 @@
 <main>
+<div class="error_explanation">
 <p><% @user.errors.full_messages.each do |message| %>
   <div class="form-error">
      <%= message %>
   </div>
 <% end %>
 </p>
+</div>
 
 <div class="container">
   <div class="row">
