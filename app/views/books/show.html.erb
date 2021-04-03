@@ -65,12 +65,12 @@
     <% end %>
   </tbody>
 </table>
-  
+  <div class="form-group">
   　<%= form_with(model:[@book, @book_comment], local: true) do |f| %>
   　　<%= f.text_area :comment, rows:'5' %>
     　<%= f.submit "送信する" %>
     <% end %>
-
+  </div
 </div>
 </div>
 </div>
