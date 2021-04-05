@@ -1,6 +1,17 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   
+  def following
+    @user = User.find(params[:id])
+    @users = @user.following_user
+  end 
+  
+  def follower
+    @user = User.find(params[:id])
+    @users = @user.follower_user
+  end 
+  
+  
   def index
     @user = current_user
     @users = User.all
