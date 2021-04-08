@@ -39,23 +39,13 @@
   </tbody>
 </table>
 
-<table>
+<table class="comment-area-<%= @book.id%>">
   <tbody>
-    <% @book.book_comments.each do |book_comment| %>
-      <tr>
-        <td>
-          <%= attachment_image_tag @book.user, :profile_image, size: "40x40", fallback: "no_image.jpg" %></br>
-          <%= book_comment.user.name %>
-        </td>
-        <td><%= book_comment.comment %></td>
-        <% if book_comment.user == current_user %>
-        <td><%= link_to "Destroy", book_book_comment_path(book_comment.book, book_comment), method: :delete, class: "btn btn-sm btn-danger" %></td>
-        <% end %>
-      </tr>
-    <% end %>
+      <%= render 'book_comments/comment-area', book: @book %>
   </tbody>
 </table>
-  　<%= form_with(model:[@book, @book_comment], local: true) do |f| %>
+
+  　<%= form_with(model:[@book, @book_comment], remote: true) do |f| %>
   　　<%= f.text_area :comment, size:"90x5" %>
     　<%= f.submit "送信する" %>
     <% end %>
