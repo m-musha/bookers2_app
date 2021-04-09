@@ -4,6 +4,23 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  include JpPrefecture
+  jp_prefecture :prefecture_code
+
+  def prefecture_name
+   JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
+  end
+
+  def prefecture_name=(prefecture_name)
+   self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
+  end
+
+  validates :postcode, presence: true
+  validates :prefecture_code, presence: true
+  validates :address_city, presence: true
+  validates :address_street, presence: true
+
+
    has_many :books, dependent: :destroy
    has_many :book_comments, dependent: :destroy
    has_many :favorites, dependent: :destroy
@@ -24,7 +41,7 @@ class User < ApplicationRecord
    def following?(user)
      following_user.include?(user)
    end
-   
+
     def self.search(search,word)
      if search == "forward_match"
         @user = User.where("name LIKE?","#{word}%")
@@ -32,7 +49,7 @@ class User < ApplicationRecord
         @user = User.where("name LIKE?","%#{word}")
      elsif search == "perfect_match"
         @user = User.where(name: "#{word}")
-        
+
      elsif search == "partial_match"
         @user = User.where("name LIKE?","%#{word}%")
      else
