@@ -12,11 +12,11 @@
     </tr>
     <tr>
       <th>follows</th>
-      <th><%= link_to user.follower.count, following_user_path(user) %></th>
+      <th><%= link_to user.follower.count, following_user_path(user), :style=>"color:black;" %></th>
     </tr>
     <tr>
       <th>followers</th>
-      <th><%= link_to user.followed.count, follower_user_path(user) %></th>
+      <th><%= link_to user.followed.count, follower_user_path(user), :style=>"color:black;" %></th>
     </tr>
   </table>
 
