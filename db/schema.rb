@@ -36,11 +36,11 @@ ActiveRecord::Schema.define(version: 2021_04_09_044734) do
   end
 
   create_table "relationships", force: :cascade do |t|
+    t.text "comment"
     t.integer "follower_id"
     t.integer "followed_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "comment"
   end
 
   create_table "users", force: :cascade do |t|
