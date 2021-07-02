@@ -21,6 +21,8 @@ class Book < ApplicationRecord
       @book = Book.all
     end
   end
+  
+  acts_as_taggable
 
 
   validates :title, presence: true
