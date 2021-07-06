@@ -1,0 +1,36 @@
+<h4>Ranking</h4>
+  <div class="col-md-8 offset-md-1">
+    <table class="table table-hover table-inverse">
+
+        <% lastfavorite = 0 %>                               <!--いいねを代入する場所-->
+        <% j = 1 %>                                      <!--jは順位を表している-->
+        <% all_ranks.each.with_index(1) do |book, i| %>  <!--with_index(1)でランキングの順位を1位から開始-->
+          <% if i == 1 %>
+            <% lastfavorite = book.favorites.count %>
+          <% end %>
+                                                         <!--ここまでで1位のwordがlastlikeに代入される-->
+        <tr class="ranks-list">
+          <% if book.favorites.count != lastfavorite %>          <!--ここから1位以下の順位について-->
+            <% j = i %>
+            <td class="ranks-number">第<%= j %>位</td>
+            <td class="ranks-book">
+              <%= link_to book_path(book.id) do %>
+              <%= book.title %>
+              <% end %>
+              </td>
+            <td class="ranks-favorite"><%= render 'favorites/favorite-btn', book:book %></td>
+            <% lastFavorite = book.favorites.count %>
+          <% else %>                                     <!--elseに1位を記述-->
+          <% lastFavorite = book.favorites.count %>
+            <td class="ranks-number">第<%= j %>位</td>
+            <td class="ranks-book">
+              <%= link_to book_path(book.id) do %>
+              <%= book.title %>
+              <% end %>
+            </td>
+            <td class="ranks-favorite"><%= render 'favorites/favorite-btn', book:book %></td>
+          <% end %>
+        <% end %>
+      </tr>
+    </table>
+  </div>

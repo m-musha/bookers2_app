@@ -12,6 +12,7 @@ class BooksController < ApplicationController
     @book = Book.new
     @books = Book.all
     @user = current_user
+    @all_ranks = Book.all_ranks
   end
 
   def create
@@ -54,7 +55,7 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body)
   end
-  
+
   def task_params
     params.require(:user).permit(:name, :description, :tag_list)
   end
