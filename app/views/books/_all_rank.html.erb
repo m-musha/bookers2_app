@@ -18,7 +18,7 @@
               <%= book.title %>
               <% end %>
               </td>
-            <td class="ranks-favorite"><%= render 'favorites/favorite-btn', book:book %></td>
+            <td class="ranks-favorite"><%= render 'favorites/favorite-btn', book: book %></td>
             <% lastFavorite = book.favorites.count %>
           <% else %>                                     <!--elseに1位を記述-->
           <% lastFavorite = book.favorites.count %>
@@ -28,7 +28,9 @@
               <%= book.title %>
               <% end %>
             </td>
-            <td class="ranks-favorite"><%= render 'favorites/favorite-btn', book:book %></td>
+            <td class="favorite-btn-<%= book.id %>">
+              <%= render 'favorites/favorite-btn', book: book %>
+            </td>
           <% end %>
         <% end %>
       </tr>
