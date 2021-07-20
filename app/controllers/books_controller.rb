@@ -13,6 +13,7 @@ class BooksController < ApplicationController
     @books = Book.all.page(params[:page]).reverse_order
     @user = current_user
     @all_ranks = Book.all_ranks
+    @month_ranks = Book.month_ranks
   end
 
   def create

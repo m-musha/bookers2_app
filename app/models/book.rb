@@ -31,4 +31,9 @@ class Book < ApplicationRecord
   def self.all_ranks
     Book.find(Favorite.group(:book_id).order('count(book_id) desc').limit(5).pluck(:book_id))
   end
+  
+  def self.month_ranks
+    Book.where(id: Favorite.group(:book_id).where(created_at: Time.current.all_month).order('count(book_id) desc').pluck(:book_id))
+  end
+  
 end
