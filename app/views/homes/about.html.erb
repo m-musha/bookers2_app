@@ -4,5 +4,56 @@
   <div class="row">
     <h1 class="px-3 mx-auto">Welcome to <i class="fas fa-book"></i><strong>Bookers</strong>!</h1>
   </div>
+
+  <div class="card">
+    <h4 class="card-header">電話帳データ一覧</h4>
+    <div class="card-body">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <td class="text-center">選択</td>
+            <td>氏名</td>
+            <td>電話番号</td>
+            <td class="text-center">編集</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-center"><input type="checkbox" name="select"></input></td>
+            <td>相澤消太</td>
+            <td>090-0000-0000</td>
+            <td class="text-center"><button type="button" value="1" class="btn btn-primary">編集</button></td>
+          </tr>
+          <tr>
+            <td class="text-center"><input type="checkbox" name="select"></input></td>
+            <td>加瀬亮</td>
+            <td>090-0000-1111</td>
+            <td class="text-center"><button type="button" value="2" class="btn btn-primary">編集</button></td>
+          </tr>
+          <tr>
+            <td class="text-center">
+              <input type="checkbox" name="select"></input>
+            </td>
+            <td>相澤消太</td>
+            <td>090-0000-2222</td>
+            <td class="text-center"><button type="button" value="3" class="btn btn-primary">編集</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <hr></hr>
+
+  <div class="card">
+    <h4 class="card-header">グループ一覧</h4>
+    <div class="card-body">
+      <div class="form row">
+        <div class="form-group col"><input class="form-control" type="text" name="userName" size="30" placeholder="氏名"></input></div>
+        <div class="form-group col"><input class="form-control" type="tel" name="telNumber" size="15" placeholder="電話番号"></input></div>
+        <div class="form-group col"><input class="form-control" type="email" name="mailAddress" size="15" placeholder="メールアドレス"></input></div>
+        <div class="col"><button class="btn btn-success">追加</button></div>
+      </div>
+    </div>
+  </div>
 </div>
 </main>
